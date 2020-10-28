@@ -1,23 +1,4 @@
-// //////////////////////
-// Rehearsal
-// //////////////////////
-
-// 1. Select the button
-// const button = document.querySelector("#click-me");
-
-// // 2. Listen to have click
-// button.addEventListener("click", (event) => {
-//   // 3. Change the DOM, add the disable class + Loading...
-//   event.currentTarget.classList.add("disable");
-//   event.currentTarget.innerText = "Loading...";
-// });
-
-
-// //////////////////////
-// HTTP GET request
-// //////////////////////
-
-// 1. Select the button, the input and the ul
+console.log("hi");
 const button = document.querySelector("#submit");
 const input = document.querySelector("#keyword");
 const results = document.querySelector("#results");
@@ -45,29 +26,9 @@ const fetchMovies = (keyword) => {
       displayMovies(movies);
     });
 };
+fetchMovies("werewolves");
 
-// 2. Listen to a click
 button.addEventListener("click", (event) => {
   event.preventDefault();
-  // 2.5 Fetch an API
   fetchMovies(input.value);
 });
-
-
-// //////////////////////
-// HTTP POST request
-// //////////////////////
-
-const searchAlgoliaPlaces = (event) => {
-  fetch("https://places-dsn.algolia.net/1/places/query", {
-    method: "POST",
-    body: JSON.stringify({ query: event.currentTarget.value })
-  })
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data.hits); // Look at local_names.default
-    });
-};
-
-const search = document.querySelector("#search");
-search.addEventListener("keyup", searchAlgoliaPlaces);
